@@ -8,6 +8,7 @@ import {
 } from './styles'
 import { ProductComponent } from '../../elements/ProductComponent'
 import { useFetchProducts } from 'queries/useFetchProducts'
+import ProductLoader  from '../../elements/ProductComponent/ProductLoader';
 
 const Products = () => {
     const productsQuery = useFetchProducts();
@@ -23,6 +24,9 @@ const Products = () => {
             <Steps>
                 <CurrentStep step="30"/>
             </Steps>
+            {productsQuery.status === 'loading' &&
+                <ProductLoader />
+            }
             <ProductsList>
                 {productsQuery.data?.map((product, index) => (
                     <ProductComponent product={product} key={index} />
