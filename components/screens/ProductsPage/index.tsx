@@ -13,6 +13,7 @@ import ProductLoader  from '../../elements/ProductComponent/ProductLoader';
 const Products = () => {
     const productsQuery = useFetchProducts();
 
+    console.log('%c⧭', 'color: #00e600', productsQuery);
     return (
         <ContainerWrap>
             <Title>

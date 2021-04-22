@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+export const ProductAdjectiveRow = styled.div`
+    display: flex; 
+    flex-direction: row;
+    margin: 5px;
+`
+
+export const ProductAdjectivesSection = styled.div`
+    display: flex; 
+    flex-direction: column;
+`
+
 export const ProductAdjective = styled.span`
     margin-left: 10px;
     color: #5F2FE1;

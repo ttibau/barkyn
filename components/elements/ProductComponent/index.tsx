@@ -1,3 +1,4 @@
+import CheckboxSVG from "components/svg/Checkbox"
 import Tag from "components/svg/Tag"
 import { 
     ProductAction, 
@@ -10,7 +11,9 @@ import {
     ProductPriceContainer, 
     ProductPricePeriod,
     ProductAdjective,
-    BtnLabel
+    BtnLabel,
+    ProductAdjectivesSection,
+    ProductAdjectiveRow
 } from "./styles"
 
 interface IProductComponent {
@@ -36,10 +39,16 @@ export const ProductComponent = ({ product } : IProductComponent) => {
                     {product.description}
                 </ProductDescription>
                 <AdjectiveRow>
-                    <Tag color="red" />
-                    <ProductAdjective>
-                        {product.adjective}
-                    </ProductAdjective>
+                        <ProductAdjectivesSection>
+                            {product.adjectives.map((adjective, index) => (
+                                <ProductAdjectiveRow key={index}>
+                                    <CheckboxSVG fill="#A98DFC" />
+                                    <ProductAdjective> 
+                                        {adjective}
+                                    </ProductAdjective>
+                                </ProductAdjectiveRow>
+                            ))}
+                        </ProductAdjectivesSection>
                 </AdjectiveRow>
             </ProductWrap>
             <ProductAction>
