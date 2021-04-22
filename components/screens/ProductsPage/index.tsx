@@ -1,8 +1,11 @@
 import { 
     ContainerWrap, 
+    CurrentStep, 
+    Steps, 
     Subtitle, 
     Title
 } from './styles'
+import { ProductComponent } from '../../elements/ProductComponent'
 
 const Products = () => {
     return (
@@ -13,6 +16,10 @@ const Products = () => {
             <Subtitle>
                 No surprise fees.
             </Subtitle>
+            <Steps>
+                <CurrentStep step="30"/>
+            </Steps>
+            <ProductComponent />
         </ContainerWrap>
     )    
 }
