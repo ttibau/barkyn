@@ -4,7 +4,7 @@ import faker from 'faker';
 export default (req, res) => {
     const products = [];
     
-    for(let i = 0; i< 3; i++) {
+    for(let i = 0; i< 4; i++) {
         const product = {
             name: faker.commerce.productName(),
             price: faker.commerce.price(),

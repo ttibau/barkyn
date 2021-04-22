@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const ProductsList = styled.div`
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    @media(max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+    }
+`
+
 export const ContainerWrap = styled.div`
     min-height: 100vh;
     width: 100%;
@@ -10,6 +20,7 @@ export const Title = styled.h1`
     font-weight: bold;
     font-size: 33px;
 `;
+     
 
 export const Subtitle = styled.h3`
     color: #D3D3D3;

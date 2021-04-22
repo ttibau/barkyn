@@ -1,13 +1,17 @@
 import { 
     ContainerWrap, 
     CurrentStep, 
+    ProductsList, 
     Steps, 
     Subtitle, 
     Title
 } from './styles'
 import { ProductComponent } from '../../elements/ProductComponent'
+import { useFetchProducts } from 'queries/useFetchProducts'
 
 const Products = () => {
+    const productsQuery = useFetchProducts();
+
     return (
         <ContainerWrap>
             <Title>
@@ -19,7 +23,11 @@ const Products = () => {
             <Steps>
                 <CurrentStep step="30"/>
             </Steps>
-            <ProductComponent />
+            <ProductsList>
+                {productsQuery.data?.map((product, index) => (
+                    <ProductComponent product={product} key={index} />
+                ))}
+            </ProductsList>
         </ContainerWrap>
     )    
 }
