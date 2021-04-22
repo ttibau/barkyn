@@ -85,12 +85,35 @@ export const ProductAction = styled.button`
         }
     }
 `
-
-
 export const ProductContainer = styled.div`
     width: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border: 1px solid #5F2FE1;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 7px;
+    &:hover {
+        background-color: #5F2FE1;
+        ${ProductAction} {
+            border: 3px solid #FFFFFF;
+        }
+        ${BtnLabel} {
+            color: #FFFFFF;
+        }
+        ${ProductName} {
+            color: #FFFFFF;
+        }
+        ${ProductPrice} {
+            color: #FFFFFF;
+        }
+        ${ProductAdjective} {
+            color: #FFFFFF;
+        }
+    }
+    @media(max-width: 800px) {
+      width: unset;
+    };
 `
