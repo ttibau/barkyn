@@ -15,4 +15,5 @@ width: 100%;
 export const BtnSection = styled.div`
     display: flex; 
     justify-content: space-between;
+    margin-top: 49px;
 `

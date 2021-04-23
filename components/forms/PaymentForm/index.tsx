@@ -7,20 +7,35 @@ import {
  } from './styles';
 import { InputComponent } from '../../elements/InputComponent';
 import { ButtonComponent } from '../../elements/ButtonComponent';
+import valid from 'card-validator';
 
-interface IShippingForm {
+interface IPaymentForm {
     submit: () => any;
 }
 
-const PaymentForm = ({ submit } : IShippingForm) => {
-    const schema = Yup.object().shape({ 
-        name: Yup.string().required('This field is required'),
-        email: Yup.string().email().required('This field is required'),
-        address: Yup.string().required('This field is required'),
-        postal_code: Yup.string().required('This field is required'),
-        country: Yup.string().required('This field is required'),
-        phone: Yup.string().required('This field is required'),
-    })
+const PaymentForm = ({ submit } : IPaymentForm) => {
+   
+    const schema = Yup.object().shape({
+        creditCardNumber: Yup.string()
+        .test(
+            `test-number`,
+            `Invalid credit card number`,
+            (value) => valid.number(value).isValid,
+        )
+        .required(`Required field`),
+        creditCardExpirationDate: Yup.string()
+        .typeError(`Invalid date. Example: MM/YY`)
+        .max(5, `Invalid date. Example: MM/YY`)
+        .matches(
+            /([0-9]{2})\/([0-9]{2})/,
+            `Invalid date. Example: MM/YY`,
+        )
+        .required(`Required field`),
+        creditCardCVV: Yup.string().min(3).max(4).required(`Required field`),
+        creditCardHolder: Yup.string().required(`Required field`),
+  });    
+
+
     const {register,  handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
@@ -34,42 +49,33 @@ const PaymentForm = ({ submit } : IShippingForm) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <InputWrapper>
                 <InputComponent 
-                    label="Name"
+                    label="Credit card number"
                     type="text"
-                    {...register(`name`, { required: true })}
-                    error={errors.name ? errors.name.message : undefined}
+                    {...register(`creditCardNumber`, { required: true })}
+                    error={errors.creditCardNumber ? errors.creditCardNumber.message : undefined}
+                />
+            </InputWrapper>
+            <InputWrapper>
+                <InputComponent 
+                    label="Expiration Date"
+                    type="text"
+                    {...register(`creditCardExpirationDate`, { required: true })}
+                    error={errors.creditCardExpirationDate ? errors.creditCardExpirationDate.message : undefined}
                 />
                 <InputComponent 
-                    label="E-mail"
+                    label="Credit card CVV"
                     type="text"
-                    {...register(`email`, { required: true })}
-                    error={errors.email ? errors.email.message : undefined}
+                    {...register(`creditCardCVV`, { required: true })}
+                    error={errors.creditCardCVV ? errors.creditCardCVV.message : undefined}
                 />
             </InputWrapper>
             <InputComponent 
-                label="Address"
+                label="Credit card Holder"
                 type="text"
-                {...register(`address`, { required: true })}
-                error={errors.address ? errors.address.message : undefined}
+                {...register(`creditCardHolder`, { required: true })}
+                error={errors.creditCardHolder ? errors.creditCardHolder.message : undefined}
             />
-            <InputComponent 
-                label="Postal code"
-                type="text"
-                {...register(`postal_code`, { required: true })}
-                error={errors.postal_code ? errors.postal_code.message : undefined}
-            />
-            <InputComponent 
-                label="Country"
-                type="text"
-                {...register(`country`, { required: true })}
-                error={errors.country ? errors.country.message : undefined}
-            />
-            <InputComponent 
-                label="Phone"
-                type="text"
-                {...register(`phone`, { required: true })}
-                error={errors.phone ? errors.phone.message : undefined}
-            />
+            
             <BtnSection>
                 <ButtonComponent onClick={(e:any) =>  {e.preventDefault(); router.back()}} label="Cancel" /> 
                 <ButtonComponent label="Next" active/>

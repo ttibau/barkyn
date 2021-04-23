@@ -21,6 +21,7 @@ import {
     PaymentDetailsLabel,
 } from './styles'
 import animationData from '../../../assets/shiping.json';
+import paymentAnimation from '../../../assets/payment.json';
 import Lottie from 'react-lottie';
 import { InputComponent } from 'components/elements/InputComponent';
 import { ButtonComponent } from 'components/elements/ButtonComponent';
@@ -29,6 +30,7 @@ import { useRouter } from 'next/dist/client/router';
 import { useEffect, useState } from 'react';
 import { asyncLocalStorage } from 'utils/asyncLocalStorage';
 import { ShippingForm } from '../../forms/ShippingForm/ShippingForm';
+import { PaymentForm } from 'components/forms/PaymentForm';
 
 
 const CheckoutPage = () => {
@@ -38,7 +40,7 @@ const CheckoutPage = () => {
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: animationData,
+        animationData:  section === 'shipping' ? animationData : paymentAnimation,
     };
     const router = useRouter();
 
@@ -96,6 +98,9 @@ const CheckoutPage = () => {
                 <CurrentSection>
                     {section === 'shipping' &&
                        <ShippingForm submit={() => setSection('payment')}/> 
+                    }
+                    {section === 'payment' &&
+                        <PaymentForm submit={() => console.log('success')}/>
                     }
                 </CurrentSection>
                 <OrderSummary>
