@@ -7,12 +7,14 @@ import {
  } from './styles';
 import { InputComponent } from '../../elements/InputComponent';
 import { ButtonComponent } from '../../elements/ButtonComponent';
+import { useRouter } from 'next/router';
 
 interface IShippingForm {
     submit: () => any;
 }
 
 const ShippingForm = ({ submit } : IShippingForm) => {
+    const router = useRouter();
     const schema = Yup.object().shape({ 
         name: Yup.string().required('This field is required'),
         email: Yup.string().email().required('This field is required'),
@@ -72,7 +74,9 @@ const ShippingForm = ({ submit } : IShippingForm) => {
                 error={errors.phone ? errors.phone.message : undefined}
             />
             <BtnSection>
-                <ButtonComponent onClick={(e:any) =>  {e.preventDefault(); router.back()}} label="Cancel" /> 
+                <div onClick={() => router.back()}>
+                    <ButtonComponent  label="Cancel" /> 
+                </div>
                 <ButtonComponent label="Next" active/>
             </BtnSection>
         </form>

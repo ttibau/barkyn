@@ -23,7 +23,7 @@ export const Header = styled.div`
 export const AnimationContainer = styled.div`
     display: flex; 
     flex-direction: row;
-    width: 30%; 
+    width: 40%; 
     align-items: center;
     margin-bottom: 30px;
 `

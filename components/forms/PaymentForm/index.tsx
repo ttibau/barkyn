@@ -11,10 +11,10 @@ import valid from 'card-validator';
 
 interface IPaymentForm {
     submit: () => any;
+    changeSection: () => any;
 }
 
-const PaymentForm = ({ submit } : IPaymentForm) => {
-   
+const PaymentForm = ({ submit, changeSection } : IPaymentForm) => {
     const schema = Yup.object().shape({
         creditCardNumber: Yup.string()
         .test(
@@ -78,7 +78,9 @@ const PaymentForm = ({ submit } : IPaymentForm) => {
             />
             
             <BtnSection>
-                <ButtonComponent onClick={(e:any) =>  {e.preventDefault(); router.back()}} label="Cancel" /> 
+                <div onClick={() => changeSection()}>
+                    <ButtonComponent label="Cancel" /> 
+                </div>
                 <ButtonComponent label="Next" active/>
             </BtnSection>
         </form>
