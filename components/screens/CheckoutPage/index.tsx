@@ -71,7 +71,7 @@ const CheckoutPage = () => {
                 </AnimationContainer>
                 <StepsContainer>
                     <Steps>
-                        <CurrentStep step="66"/>
+                        <CurrentStep step={ section === 'shipping' ? '66' : '100'}/>
                     </Steps>
                     <CurrentStepLabel>
                         {section === 'shipping' &&
