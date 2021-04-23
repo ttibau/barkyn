@@ -1,24 +1,20 @@
 import { 
     ContainerWrap, 
     CurrentStep, 
-    ProductsList, 
     Steps, 
     Subtitle, 
     Title, 
     AnimationContainer,
     LabelsContainer, 
-    Header, 
-    StepsContainer,
-    CurrentStepLabel
+    Header,
+    StepsContainer, 
+    CurrentStepLabel,
+    SectionTitle
 } from './styles'
-import { ProductComponent } from '../../elements/ProductComponent'
-import { useFetchProducts } from 'queries/useFetchProducts'
-import ProductLoader  from '../../elements/ProductComponent/ProductLoader';
-import animationData from '../../../assets/product.json';
+import animationData from '../../../assets/shiping.json';
 import Lottie from 'react-lottie';
 
-const Products = () => {
-    const productsQuery = useFetchProducts();
+const CheckoutPage = () => {
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -44,21 +40,18 @@ const Products = () => {
                 </AnimationContainer>
                 <StepsContainer>
                     <Steps>
-                        <CurrentStep step="33"/>
+                        <CurrentStep step="66"/>
                     </Steps>
-                    <CurrentStepLabel>Select Product (1/3)</CurrentStepLabel>
-                </StepsContainer>
+                    <CurrentStepLabel>Shipping Address (2/3)</CurrentStepLabel>
+                </StepsContainer> 
             </Header>
-            {productsQuery.status === 'loading' &&
-                <ProductLoader />
-            }
-            <ProductsList>
-                {productsQuery.data?.map((product, index) => (
-                    <ProductComponent product={product} key={index} />
-                ))}
-            </ProductsList>
+
+            <SectionTitle>
+                Shipping Details
+            </SectionTitle>
+           
         </ContainerWrap>
     )    
 }
 
-export { Products }
+export { CheckoutPage }

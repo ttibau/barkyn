@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+export const SectionTitle = styled.h1`
+    
+`
 
 export const CurrentStepLabel = styled.span`
     color: #D3D3D3;
@@ -31,16 +34,6 @@ export const AnimationContainer = styled.div`
 export const LabelsContainer = styled.div`
     display: flex;
     flex-direction: column;
-`
-
-export const ProductsList = styled.div`
-    display: flex; 
-    flex-direction: row;
-    justify-content: center;
-    @media(max-width: 800px) {
-        flex-direction: column;
-        align-items: center;
-    }
 `
 
 export const ContainerWrap = styled.div`

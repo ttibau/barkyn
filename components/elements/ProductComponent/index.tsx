@@ -1,5 +1,6 @@
 import CheckboxSVG from "components/svg/Checkbox"
 import Tag from "components/svg/Tag"
+import { useRouter } from "next/dist/client/router"
 import { 
     ProductAction, 
     ProductName, 
@@ -21,6 +22,9 @@ interface IProductComponent {
 }
 
 export const ProductComponent = ({ product } : IProductComponent) => {
+
+    const router = useRouter();
+
     return (
         <ProductContainer>
             <ProductWrap>
@@ -51,7 +55,7 @@ export const ProductComponent = ({ product } : IProductComponent) => {
                         </ProductAdjectivesSection>
                 </AdjectiveRow>
             </ProductWrap>
-            <ProductAction>
+            <ProductAction onClick={() => router.push('/checkout')}>
                 <BtnLabel>
                     Choose Product
                 </BtnLabel>
