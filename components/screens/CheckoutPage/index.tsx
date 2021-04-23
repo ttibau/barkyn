@@ -13,7 +13,13 @@ import {
     Content,
     CurrentSection,
     OrderSummary,
-    InputWraper
+    InputWraper,
+    GiftSection,
+    CommonLabel,
+    ProductSelected,
+    PaymentDetails,
+    PaymentRow,
+    PaymentDetailsLabel
 } from './styles'
 import animationData from '../../../assets/shiping.json';
 import Lottie from 'react-lottie';
@@ -22,6 +28,7 @@ import { InputComponent } from 'components/elements/InputComponent';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ButtonComponent } from 'components/elements/ButtonComponent';
+import DogSVG from 'components/svg/dog';
 
 
 const CheckoutPage = () => {
@@ -121,7 +128,37 @@ const CheckoutPage = () => {
                     </form>
                 </CurrentSection>
                 <OrderSummary>
-                    order
+                    <SectionTitle>Order Summary</SectionTitle>
+                    <DogSVG />
+                    <ProductSelected>
+                        Handcrafted Cotton Computer
+                        $883.00
+                    </ProductSelected>
+                    <CommonLabel>Gift card/Discount code</CommonLabel>
+                    <GiftSection>
+                        <InputComponent 
+                            placeholder="Gift card"
+                        />
+                        <ButtonComponent label="Go!" btnType="small" />
+                    </GiftSection>
+                    <PaymentDetails>
+                        <PaymentRow>
+                           <PaymentDetailsLabel>Subtotal</PaymentDetailsLabel> 
+                           <PaymentDetailsLabel>$19.00</PaymentDetailsLabel>
+                        </PaymentRow>
+                        <PaymentRow>
+                           <PaymentDetailsLabel>Tax</PaymentDetailsLabel> 
+                           <PaymentDetailsLabel>$19.00</PaymentDetailsLabel>
+                        </PaymentRow>
+                        <PaymentRow>
+                           <PaymentDetailsLabel>Shipping</PaymentDetailsLabel> 
+                           <PaymentDetailsLabel>$19.00</PaymentDetailsLabel>
+                        </PaymentRow>
+                        <PaymentRow>
+                           <PaymentDetailsLabel total>Total</PaymentDetailsLabel> 
+                           <PaymentDetailsLabel total>$19.00</PaymentDetailsLabel>
+                        </PaymentRow>
+                    </PaymentDetails>
                 </OrderSummary>
            </Content>
         </ContainerWrap>

@@ -2,11 +2,12 @@ import {BtnLabel, ButtonWrapper} from './styles';
 
 interface IButtonComponentProps {
     label: string;
+    btnType?: string;
 }
 
-const ButtonComponent = ({ label }: IButtonComponentProps) => {
+const ButtonComponent = ({ label, btnType }: IButtonComponentProps) => {
     return (
-        <ButtonWrapper>
+        <ButtonWrapper btnType={btnType}>
             <BtnLabel>
                 {label}
             </BtnLabel>

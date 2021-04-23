@@ -11,6 +11,11 @@ export const Content = styled.div`
       align-items: center;
     } 
 `
+
+export const ProductSelected = styled.div`
+    display: flex;
+    flex-direction: column;
+`
  
 export const InputWraper = styled.div`
     display: flex; 
@@ -23,15 +28,53 @@ export const InputWraper = styled.div`
     };
 `
 
+export const PaymentDetails = styled.div`
+    display: flex; 
+    flex-direction: column;
+    width: 80%;
+`
+
+export const PaymentRow = styled.div`
+    display: flex; 
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+`
+
+interface IPaymentDetailsLabel {
+    total?: boolean;
+}
+
+export const PaymentDetailsLabel = styled.span<IPaymentDetailsLabel>`
+    font-weight: ${({ total }) => total ? 'bold' : 'normal'};
+    font-size: ${({ total }) => total ? '22px' : '16px'};
+    margin: 8px 0;
+`
+
+export const GiftSection = styled.div`
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`
+
+export const CommonLabel = styled.span`
+    color: #D3D3D3;
+    margin-top: 10px
+`
+
 export const OrderSummary = styled.div`
     width: 30%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
 `
 
 export const CurrentSection = styled.div`
     width: 70%;
 `
 
-export const SectionTitle = styled.h1`
+export const SectionTitle = styled.h2`
     
 `
 

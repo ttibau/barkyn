@@ -5,12 +5,14 @@ export const BtnLabel = styled.span`
     color: #5F2FE1;
 `
 
+interface IButtonWrapperProps {
+    btnType?: string;
+}
 
-export const ButtonWrapper = styled.button`
+export const ButtonWrapper = styled.button<IButtonWrapperProps>`
     background-color: transparent;
-    margin-top: 30px;
     border: 3px solid #5F2FE1;
-    padding: 15px;
+    padding: ${({ btnType }) => btnType === 'small' ? '11px' : '15px'};
     display: flex;
     justify-content: center; 
     align-items: center; 

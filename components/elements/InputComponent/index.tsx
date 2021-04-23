@@ -5,7 +5,7 @@ import { Input, Label, InputContainer, ErorrHandler } from './styles';
 type NativeInputProps = InputHTMLAttributes<HTMLInputElement>;
 interface IInputProps {
   placeholder?: string;
-  label: string;
+  label?: string;
   type?: string;
   error?: string;
 }
