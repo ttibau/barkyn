@@ -13,27 +13,10 @@ export const Content = styled.div`
 `
 
 
-export const BtnSection = styled.div`
-    display: flex; 
-    justify-content: space-between;
-`
-
 export const ProductSelected = styled.div`
     display: flex;
     flex-direction: column;
 `
- 
-export const InputWraper = styled.div`
-    display: flex; 
-    margin:0px;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    @media(max-width: 800px) {
-      flex-direction: column;
-    };
-`
-
 export const PaymentDetails = styled.div`
     display: flex; 
     flex-direction: column;

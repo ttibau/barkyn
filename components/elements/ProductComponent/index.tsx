@@ -1,6 +1,7 @@
 import CheckboxSVG from "components/svg/Checkbox"
 import Tag from "components/svg/Tag"
 import { useRouter } from "next/dist/client/router"
+import { asyncLocalStorage } from "utils/asyncLocalStorage"
 import { 
     ProductAction, 
     ProductName, 
@@ -24,6 +25,11 @@ interface IProductComponent {
 export const ProductComponent = ({ product } : IProductComponent) => {
 
     const router = useRouter();
+
+    const selectProduct = async () => {
+        await asyncLocalStorage.setItem('selectedProduct', JSON.stringify(product));
+        router.push('/checkout')
+    }
 
     return (
         <ProductContainer>
@@ -55,7 +61,7 @@ export const ProductComponent = ({ product } : IProductComponent) => {
                         </ProductAdjectivesSection>
                 </AdjectiveRow>
             </ProductWrap>
-            <ProductAction onClick={() => router.push('/checkout')}>
+            <ProductAction onClick={() => selectProduct()}>
                 <BtnLabel>
                     Choose Product
                 </BtnLabel>

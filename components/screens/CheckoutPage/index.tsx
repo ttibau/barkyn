@@ -13,27 +13,28 @@ import {
     Content,
     CurrentSection,
     OrderSummary,
-    InputWraper,
     GiftSection,
     CommonLabel,
     ProductSelected,
     PaymentDetails,
     PaymentRow,
     PaymentDetailsLabel,
-    BtnSection
 } from './styles'
 import animationData from '../../../assets/shiping.json';
 import Lottie from 'react-lottie';
-import { useForm } from 'react-hook-form';
 import { InputComponent } from 'components/elements/InputComponent';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { ButtonComponent } from 'components/elements/ButtonComponent';
 import DogSVG from 'components/svg/dog';
 import { useRouter } from 'next/dist/client/router';
+import { useEffect, useState } from 'react';
+import { asyncLocalStorage } from 'utils/asyncLocalStorage';
+import { ShippingForm } from '../../forms/ShippingForm/ShippingForm';
 
 
 const CheckoutPage = () => {
+    const [product, setProduct] = useState<IProduct>();
+    const [section, setSection] = useState<string>('shipping');
+
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -41,20 +42,14 @@ const CheckoutPage = () => {
     };
     const router = useRouter();
 
-    const schema = Yup.object().shape({ 
-        name: Yup.string().required('This field is required'),
-        email: Yup.string().email().required('This field is required'),
-        address: Yup.string().required('This field is required'),
-        postal_code: Yup.string().required('This field is required'),
-        country: Yup.string().required('This field is required'),
-        phone: Yup.string().required('This field is required'),
-    })
-
-    const {register,  handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(schema)
-    });
-    const onSubmit = data => console.log(data);
-
+    useEffect(() => {
+        const getSelectedProduct = async () => {
+            let selectedProduct = await asyncLocalStorage.getItem('selectedProduct')
+            if(selectedProduct)
+                setProduct(JSON.parse(selectedProduct))
+        }
+        getSelectedProduct();
+    }, [])
 
     return (
         <ContainerWrap>
@@ -78,67 +73,37 @@ const CheckoutPage = () => {
                     <Steps>
                         <CurrentStep step="66"/>
                     </Steps>
-                    <CurrentStepLabel>Shipping Address (2/3)</CurrentStepLabel>
+                    <CurrentStepLabel>
+                        {section === 'shipping' &&
+                            'Shipping Address (2/3)'
+                        } 
+                        {section === 'payment' &&
+                            'Payment (3/3)'
+                        }
+                    </CurrentStepLabel>
                 </StepsContainer> 
             </Header>
 
             <SectionTitle>
-                Shipping Details
+                {section === 'shipping' &&
+                    'Shipping Details'
+                }
+                {section === 'payment' &&
+                    'Payment Details'
+                }
             </SectionTitle>
            <Content>
                 <CurrentSection>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-
-                        <InputWraper>
-                            <InputComponent 
-                                label="Name"
-                                type="text"
-                                {...register(`name`, { required: true })}
-                                error={errors.name ? errors.name.message : undefined}
-                            />
-                            <InputComponent 
-                                label="E-mail"
-                                type="text"
-                                {...register(`email`, { required: true })}
-                                error={errors.email ? errors.email.message : undefined}
-                            />
-                        </InputWraper>
-                        <InputComponent 
-                            label="Address"
-                            type="text"
-                            {...register(`address`, { required: true })}
-                            error={errors.address ? errors.address.message : undefined}
-                        />
-                        <InputComponent 
-                            label="Postal code"
-                            type="text"
-                            {...register(`postal_code`, { required: true })}
-                            error={errors.postal_code ? errors.postal_code.message : undefined}
-                        />
-                        <InputComponent 
-                            label="Country"
-                            type="text"
-                            {...register(`country`, { required: true })}
-                            error={errors.country ? errors.country.message : undefined}
-                        />
-                        <InputComponent 
-                            label="Phone"
-                            type="text"
-                            {...register(`phone`, { required: true })}
-                            error={errors.phone ? errors.phone.message : undefined}
-                        />
-                        <BtnSection>
-                            <ButtonComponent onClick={(e:any) =>  {e.preventDefault(); router.back()}} label="Cancel" /> 
-                            <ButtonComponent label="Next" active/>
-                        </BtnSection>
-                    </form>
+                    {section === 'shipping' &&
+                       <ShippingForm submit={() => setSection('payment')}/> 
+                    }
                 </CurrentSection>
                 <OrderSummary>
                     <SectionTitle>Order Summary</SectionTitle>
                     <DogSVG />
                     <ProductSelected>
-                        Handcrafted Cotton Computer
-                        $883.00
+                        {product?.name}
+                        ${product?.price}
                     </ProductSelected>
                     <CommonLabel>Gift card/Discount code</CommonLabel>
                     <GiftSection>
