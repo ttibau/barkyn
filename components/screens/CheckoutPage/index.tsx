@@ -107,7 +107,7 @@ const CheckoutPage = () => {
                        <ShippingForm submit={() => setSection('payment')}/> 
                     }
                     {section === 'payment' &&
-                        <PaymentForm submit={() => console.log('success')}/>
+                        <PaymentForm submit={() => router.push('/success') }/>
                     }
                 </CurrentSection>
                 <OrderSummary>

@@ -36,6 +36,7 @@ const ShippingForm = ({ submit } : IShippingForm) => {
                 <InputComponent 
                     label="Name"
                     type="text"
+                    wrapped
                     {...register(`name`, { required: true })}
                     error={errors.name ? errors.name.message : undefined}
                 />

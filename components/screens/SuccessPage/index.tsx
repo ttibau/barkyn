@@ -1,5 +1,8 @@
 import { 
-    ContainerWrap, 
+    ContainerWrap,
+    SuccessContainer, 
+    SuccessTitle,
+    SuccessSubtitle
 } from './styles'
 import successAnimation from '../../../assets/success.json';
 import Lottie from 'react-lottie';
@@ -13,14 +16,22 @@ const SuccessPage = () => {
     };
     return (
         <ContainerWrap>
-            <Lottie
-                options={defaultOptions}
-                width={100}
-                height={100}
-            />
-           Payment Successful 
-           Your payment was successful. You now continue to Barkyn
-           <ButtonComponent label="Barkyn" active />
+            <SuccessContainer>
+                <Lottie
+                    options={defaultOptions}
+                    width={150}
+                    height={150}
+                />
+                <SuccessTitle>
+                    Payment Successful
+                </SuccessTitle>
+                <SuccessSubtitle>
+                    Your payment was successful. You now continue to Barkyn
+                </SuccessSubtitle>
+                <a href="http://barkyn.com">
+                    <ButtonComponent label="Barklyn" active />
+                </a>
+           </SuccessContainer>
         </ContainerWrap>
     )    
 }
