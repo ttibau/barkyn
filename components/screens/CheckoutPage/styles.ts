@@ -1,5 +1,36 @@
 import styled from 'styled-components';
 
+export const Content = styled.div`
+    display: flex; 
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+
+    @media(max-width: 800px) {
+      flex-direction: column;
+      align-items: center;
+    } 
+`
+ 
+export const InputWraper = styled.div`
+    display: flex; 
+    margin:0px;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    @media(max-width: 800px) {
+      flex-direction: column;
+    };
+`
+
+export const OrderSummary = styled.div`
+    width: 30%;
+`
+
+export const CurrentSection = styled.div`
+    width: 70%;
+`
+
 export const SectionTitle = styled.h1`
     
 `
