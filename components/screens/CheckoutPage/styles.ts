@@ -12,6 +12,10 @@ export const Content = styled.div`
     } 
 `
 
+export const ProductName = styled.span`
+    font-size: 18px;
+    font-weight: bold;
+`
 
 export const ProductSelected = styled.div`
     display: flex;
@@ -20,7 +24,11 @@ export const ProductSelected = styled.div`
 export const PaymentDetails = styled.div`
     display: flex; 
     flex-direction: column;
+    justify-content:center;
     width: 80%;
+    @media(max-width: 800px){
+        width: unset;
+    }
 `
 
 export const PaymentRow = styled.div`
@@ -54,6 +62,9 @@ export const CommonLabel = styled.span`
 
 export const OrderSummary = styled.div`
     width: 30%;
+    @media(max-width: 800px){
+        width: unset;
+    }
     display: flex; 
     flex-direction: column;
     align-items: center;
@@ -64,7 +75,9 @@ export const CurrentSection = styled.div`
 `
 
 export const SectionTitle = styled.h2`
-    
+    @media(max-width: 800px){
+        margin-left: 50px;
+    }
 `
 
 export const CurrentStepLabel = styled.span`

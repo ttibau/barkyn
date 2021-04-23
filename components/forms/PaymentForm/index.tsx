@@ -59,6 +59,7 @@ const PaymentForm = ({ submit } : IPaymentForm) => {
                 <InputComponent 
                     label="Expiration Date"
                     type="text"
+                    wrapped
                     {...register(`creditCardExpirationDate`, { required: true })}
                     error={errors.creditCardExpirationDate ? errors.creditCardExpirationDate.message : undefined}
                 />

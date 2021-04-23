@@ -19,6 +19,7 @@ import {
     PaymentDetails,
     PaymentRow,
     PaymentDetailsLabel,
+    ProductName
 } from './styles'
 import animationData from '../../../assets/shiping.json';
 import paymentAnimation from '../../../assets/payment.json';
@@ -52,6 +53,12 @@ const CheckoutPage = () => {
         }
         getSelectedProduct();
     }, [])
+
+    const getProductPrice = (product:any) => {
+        if(product && product.price){
+            return product.price + 19 + 22
+        }
+    }
 
     return (
         <ContainerWrap>
@@ -107,7 +114,7 @@ const CheckoutPage = () => {
                     <SectionTitle>Order Summary</SectionTitle>
                     <DogSVG />
                     <ProductSelected>
-                        {product?.name}
+                       <ProductName>{product?.name}</ProductName>
                         ${product?.price}
                     </ProductSelected>
                     <CommonLabel>Gift card/Discount code</CommonLabel>
@@ -120,7 +127,7 @@ const CheckoutPage = () => {
                     <PaymentDetails>
                         <PaymentRow>
                            <PaymentDetailsLabel>Subtotal</PaymentDetailsLabel> 
-                           <PaymentDetailsLabel>$19.00</PaymentDetailsLabel>
+                           <PaymentDetailsLabel>${product?.price}</PaymentDetailsLabel>
                         </PaymentRow>
                         <PaymentRow>
                            <PaymentDetailsLabel>Tax</PaymentDetailsLabel> 
@@ -128,11 +135,11 @@ const CheckoutPage = () => {
                         </PaymentRow>
                         <PaymentRow>
                            <PaymentDetailsLabel>Shipping</PaymentDetailsLabel> 
-                           <PaymentDetailsLabel>$19.00</PaymentDetailsLabel>
+                           <PaymentDetailsLabel>$22.00</PaymentDetailsLabel>
                         </PaymentRow>
                         <PaymentRow>
                            <PaymentDetailsLabel total>Total</PaymentDetailsLabel> 
-                           <PaymentDetailsLabel total>$19.00</PaymentDetailsLabel>
+                           <PaymentDetailsLabel total>${getProductPrice(product)}</PaymentDetailsLabel>
                         </PaymentRow>
                     </PaymentDetails>
                 </OrderSummary>

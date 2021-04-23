@@ -23,10 +23,15 @@ export const Label = styled.span`
   font-weight: bold;
 `;
 
-export const InputContainer = styled.div`
+interface IInputContainer {
+  wrapped?: boolean;
+}
+
+export const InputContainer = styled.div<IInputContainer>`
   display: flex;
   position: relative;
   flex-direction: column;
   width: 100%;
   margin: 20px 0px;
+  margin-right: ${({ wrapped }) => wrapped ? '20px' : 'unset'}
 `;

@@ -8,11 +8,12 @@ interface IInputProps {
   label?: string;
   type?: string;
   error?: string;
+  wrapped?:boolean;
 }
 
 export const InputComponent = React.forwardRef<NativeInputProps, IInputProps>(
   (props, ref) => (
-    <InputContainer>
+    <InputContainer wrapped={props.wrapped}>
       <Label>{props.label}</Label>
       <Input placeholder={props.placeholder} ref={ref as any} {...props} />
       <ErorrHandler>
