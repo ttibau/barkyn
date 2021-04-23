@@ -19,7 +19,8 @@ import {
     ProductSelected,
     PaymentDetails,
     PaymentRow,
-    PaymentDetailsLabel
+    PaymentDetailsLabel,
+    BtnSection
 } from './styles'
 import animationData from '../../../assets/shiping.json';
 import Lottie from 'react-lottie';
@@ -29,6 +30,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ButtonComponent } from 'components/elements/ButtonComponent';
 import DogSVG from 'components/svg/dog';
+import { useRouter } from 'next/dist/client/router';
 
 
 const CheckoutPage = () => {
@@ -37,6 +39,7 @@ const CheckoutPage = () => {
         autoplay: true,
         animationData: animationData,
     };
+    const router = useRouter();
 
     const schema = Yup.object().shape({ 
         name: Yup.string().required('This field is required'),
@@ -124,7 +127,10 @@ const CheckoutPage = () => {
                             {...register(`phone`, { required: true })}
                             error={errors.phone ? errors.phone.message : undefined}
                         />
-                        <ButtonComponent label="Next" />
+                        <BtnSection>
+                            <ButtonComponent onClick={(e:any) =>  {e.preventDefault(); router.back()}} label="Cancel" /> 
+                            <ButtonComponent label="Next" active/>
+                        </BtnSection>
                     </form>
                 </CurrentSection>
                 <OrderSummary>

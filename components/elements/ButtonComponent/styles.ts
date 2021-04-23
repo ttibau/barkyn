@@ -1,16 +1,21 @@
 import styled from 'styled-components'
 
-export const BtnLabel = styled.span`
+interface IBtnLabelProps {
+    active?: boolean;
+}
+
+export const BtnLabel = styled.span<IBtnLabelProps>`
     font-weight: bold;
-    color: #5F2FE1;
+    color: ${({ active }) => active ? '#FFFFFF' : '#5F2FE1'};
 `
 
 interface IButtonWrapperProps {
     btnType?: string;
+    active?: boolean;
 }
 
 export const ButtonWrapper = styled.button<IButtonWrapperProps>`
-    background-color: transparent;
+    background-color: ${({ active }) => active ? '#5F2FE1' : 'transparent'};
     border: 3px solid #5F2FE1;
     padding: ${({ btnType }) => btnType === 'small' ? '11px' : '15px'};
     display: flex;

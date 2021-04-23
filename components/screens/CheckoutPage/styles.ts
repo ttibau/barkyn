@@ -12,6 +12,12 @@ export const Content = styled.div`
     } 
 `
 
+
+export const BtnSection = styled.div`
+    display: flex; 
+    justify-content: space-between;
+`
+
 export const ProductSelected = styled.div`
     display: flex;
     flex-direction: column;
