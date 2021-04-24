@@ -23,8 +23,8 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet"></link> 
+        <link href='/public/fonts/Lato-Regular.ttf' rel='stylesheet' type='text/css' />
+
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>

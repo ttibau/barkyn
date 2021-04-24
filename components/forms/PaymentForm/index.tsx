@@ -79,7 +79,7 @@ const PaymentForm = ({ submit, changeSection } : IPaymentForm) => {
             
             <BtnSection>
                 <div onClick={() => changeSection()}>
-                    <ButtonComponent label="Cancel" /> 
+                    <ButtonComponent label="Back" /> 
                 </div>
                 <ButtonComponent label="Next" active/>
             </BtnSection>

@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Barkyn Frontend Coding Challenge
 
-## Getting Started
+Demo: https://barkyn-five.vercel.app/checkout
 
-First, run the development server:
+- ✨  **react-query** -  API requests with cache 
+- 💅  **styled-components** - styling with js
+- 📣  **react-hook-form** - Manager and form handler
+- 👮 **cypress** - e2e tests
+- ❗**Yup** -  Form  validations
+- 🙄 **react-testing-library** - Units tests
 
-```bash
-npm run dev
-# or
+## 🚀 Running project locally
+```
+yarn 
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Running end to end tests 
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+First start the server with `yarn dev` then run `npx cypress open` in another terminal
+![image info](https://i.imgur.com/zH2zI3q.png)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Acceptance criteria (must have)
+[x] Use of React and Next.js
+[x] Git repository
+[x] Documentation of your process:
+[x] Instructions on how to run the project (e.g. README.md, DEVELOPERLOG.md)
+[x] Pages must be fully responsive and mobile friendly
+[x] Unit tests - no need to achieve 100% coverage, but rather cover some components to showcase your test writing skills
+  `yarn jest`
+[x] Good markup, semantic HTML and SEO concerns
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Optional criteria (nice to have)
+[x] Use of CSS-in-JS
+[x] Use of TypeScript
+[x] A demo website running on Vercel, Netlify or any other similar free platform
+[x] Visually balanced UI and UX
+[x] Loading transitions between pages (e.g. react-loading-skeleton)
+[ ] Accessibility concerns
+[ ] Use of Storybook (I know how to implement this, but did not have time)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## What was done
+- Products page with internal api integration using faker js and next api structure;
+- checkout page with selected product and form validation for all input fields; 
+- success page with a cute dog; 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## What could be improved
+- The page should have a unique layout base, inherited 
