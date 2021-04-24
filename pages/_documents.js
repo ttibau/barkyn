@@ -23,8 +23,9 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-        <link href='/public/fonts/Lato-Regular.ttf' rel='stylesheet' type='text/css' />
-
+          <style>
+          @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+          </style>
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>
