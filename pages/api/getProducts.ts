@@ -1,7 +1,7 @@
 import faker from 'faker';
 
 
-export default (req, res) => {
+export default (req:any, res:any) => {
     const products = [];
     
     for(let i = 0; i< 4; i++) {
