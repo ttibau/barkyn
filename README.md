@@ -47,3 +47,6 @@ First start the server with `yarn dev` then run `npx cypress open` in another te
 
 ## What could be improved
 - The page should have a unique layout base, inherited 
+- Dropdown option in country input field (maybe using react-select);
+- Summary screen with all informations;
+- 
